@@ -1,0 +1,59 @@
+//less中的条件判断
+.public(@a,@b) when(@a<@b){
+  //函数在调用时 会判断when里面的条件是否成立
+  background: blue;
+}
+
+.box{
+  .public(2,3);
+}
+
+//less中默认提供的方法：isnumber  isstring  iscolor isfunction
+//.public(@a,@b) when(isnumber(@a)){
+//  //函数在调用时 会判断when里面的条件是否成立
+//  background: blue;
+//}
+//.box2{
+//  .public(2);
+//}
+
+//less中的递归
+.clomun(@c) when(@c<10){
+    .bos@{c}{
+      width:unit(@c*100,%)
+    };
+   .clomun(@c+1);
+};
+.clomun(1);
+
+//编译后
+.box {
+  background: blue;
+}
+.bos1 {
+  width: 100%;
+}
+.bos2 {
+  width: 200%;
+}
+.bos3 {
+  width: 300%;
+}
+.bos4 {
+  width: 400%;
+}
+.bos5 {
+  width: 500%;
+}
+.bos6 {
+  width: 600%;
+}
+.bos7 {
+  width: 700%;
+}
+.bos8 {
+  width: 800%;
+}
+.bos9 {
+  width: 900%;
+}
