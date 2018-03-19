@@ -73,3 +73,41 @@ _mysite.scss
 其实你也可以按照你自己的需求去组装，假设，首页我只需要首页用到的样式，那么你完全可以创建一个index.scss的SCSS文件，然后将需要的引入进来：
 
 接下来，在index.html引用编译出来的样式文件index.css即可（文件名你可以换成自己想要的）。
+
+
+SASS是一种CSS的开发工具，提供了许多便利的写法，大大节省了设计者的时间，使得CSS的开发，变得简单和可维护。为CSS加入编程元素，这被叫做"CSS预处理器"（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。
+  ● ruby安装   http://www.w3cplus.com/sassguide/install.html
+
+因为sass依赖于ruby环境，所以装sass之前先确认装了ruby。先导官网下载个ruby
+在安装的时候，请勾选Add Ruby executables to your PATH这个选项，添加环境变量，不然以后使用编译软件的时候会提示找不到ruby环境
+
+sass安装
+安装完ruby之后，在开始菜单中，找到刚才我们安装的ruby，打开Start Command Prompt with Ruby
+
+然后直接在命令行中输入
+gem install sass
+按回车键确认，等待一段时间就会提示你sass安装成功。最近因为墙的比较厉害，如果你没有安装成功，那么请参考下面的淘宝的RubyGems镜像安装sass，如果成功则忽略。
+如果要安装beta版本的，可以在命令行中输入
+gem install sass --pre
+你还可以从sass的Git repository来安装，git的命令行为
+git clone git://github.com/nex3/sass.git
+      cd sass
+      rake install
+升级sass版本的命令行为 ：gem update sass
+查看sass版本的命令行为 ：sass -v
+
+你也可以运行帮助命令行来查看你需要的命令
+sass -h
+淘宝RubyGems镜像安装 sass
+由于国内网络原因（你懂的），导致 rubygems.org 存放在 Amazon S3 上面的资源文件间歇性连接失败。这时候我们可以通过gem sources命令来配置源，先移除默认的https://rubygems.org源，然后添加淘宝的源https://ruby.taobao.org/，然后查看下当前使用的源是哪个，如果是淘宝的，则表示可以输入sass安装命令gem install sass了，关于常用gem source命令可参看：常用的gem source
+$ gem sources --remove https://rubygems.org/
+$ gem sources -a https://ruby.taobao.org/ 【如果你系统不支持https，请将淘宝源更换成：gem sources -a http://gems.ruby-china.org】
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org
+# 请确保只有 ruby.taobao.org
+$ gem install sass
+如果上述方法不能正常安装的话，可以按下面录制的动画效果来安装
+
+
