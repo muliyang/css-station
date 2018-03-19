@@ -1,0 +1,75 @@
+
+首先,CSS能完成的事情，Sass一样能完成，而且可能更好的完成，另外CSS做不到的事情，却有很多Sass能做到，比如：
+  ● Sass可以定义变量，混合宏，%placeholder；
+  ● Sass可以定义函数；
+  ● Sass可以使用@if、@fore、@while这样的控制指令；
+  ● Sass可以使用JSON数据(map)；
+当然，除了这些基本功能之外，在项目中使用Sass，还可以让你更好的维护项目，扩展项目，复用项目等。还能让你的代码更简洁。
+
+创建运行Sass的环境
+要想在项目中正常使用Sass，你得先保证你的电脑上能运行Sass的环境。这也是Sass受限，也是不被大家爱戴的原因之一。很多人讨论使用Sass，需要先安装Ruby环境。对于不喜欢命令编译的同学，还需要安装GUI编译器。
+至于如何在电脑上安装Sass，在这篇文章中就不做过多的阐述，感兴趣的同学可以阅			   读下面的文章：
+  ● Sass安装 http://www.w3cplus.com/sassguide/install.html
+  ● Sass编译 http://www.w3cplus.com/preprocessor/sass-compile.html
+  ● Sass调试 http://www.w3cplus.com/preprocessor/sass-debug-with-developer-tool.html
+
+
+创建公用的Sass项目模板
+在做项目时，不管什么项目，他们之间总是有一些可以共用的部分。比如说重置样式、公用样式、模块组件、UI库等。那么在Sass项目中也是如此。为了避免在每个项目中做一些相同的事情，那么你可以在你的电脑上创建一个公用的Sass项目模板。比如：
+
+在这样的一个模板中，每个Sass目录下的文件夹都对应着各种分类的_xxx.scss文件：
+  ● base：放置一些基本样式的SCSS文件，比如重置样式_normalize.scss，基本样式_base.scss，文本排版样式_typography.scss等
+  ● components：放置一些公用组件，比如：按钮_buttons.scss、表单_form.scss、表格_tables.scss、选项卡_tabs.scss等
+  ● helps：放置一些辅助功能性文件，比如：_css3.scss、_variables.scss、_mixins.scss、_helpers.scss和_function.scss等
+  ● layout：放置一些跟页面布局相关的，比如：_layout.scss、_header.scss、_footer.scss、_sidbar.scss等
+  ● pages:放置跟具体项目页面相关的样式文件。
+  ● themes：对于一些有前后台页面，或者需换肤的项目，就可以将相关文件放置在这里。
+  ● vendors：引用的外部插件或者框架的SCSS文件，比如_bootstrap.scss、_foundation.scss。
+  ● style.scss这是主样式文件，最终编译，就编译这个问题。当然根据项目大小，可做一些其他处理。比如说针对不同的页面,创建不同的page_xxx.scss文件。
+当然每个人或许会有不同的方式方法。创建好了这样的一个模板之后，以后只要有新项目，就可以复制、粘贴，然后修改项目名称，这样就即可。
+不过，对于一些公共使用的部分，还是尽量在公用模板中修改。比如说你添加的混合宏mixin、占位符%placeholder、函数功能function。还有就是一些公用的组件。
+或许这样复制并不方便，那是否可以考虑像Compass这样的框架，自己写一个可安装的功能呢？或者将公用的部分，引用到你所有需要的项目中？不过这两种方法，我都没有尝试过。其一，自己不会写那种带有gem安装功能的东东，其二，没有单独试过在不同的项目中使用相对路径调用资源。如果您尝试过，记得与我们一起分享。
+组织Sass项目
+其实就是将公用的这个当作是一个Sass项目，只不过这个Sass项目是用来做备用的，可以无限制的复用。那么在创建这样的一个项目时，就需要合理的组织，便天后期的使用。
+早前翻译过John W. Long的一篇文章：如何组织一个Sass项目。上面的文件组织结构的思路就是来源于此。当然，大家还可以参考一些大型Sass框架做为参考：
+Compass
+
+Foundation
+
+Bootstrap-Sass
+
+除此之外，还有：
+  ● Gumby
+  ● Bourbon
+  ● Susy
+  ● Inuit.css
+  ● Front end framework
+  ● Discover Sass & Compass Extensions
+Sass项目的编译与调试
+具备上述之后，你在具体编写Sass的时候，还需要掌握Sass的编译和调试。众所周知，在项目中具体引用的是.css文件而不是.scss或者.sass文件。所以你要将写好的Sass编译成需要的CSS。对于如何编译？其实方法很多种，你要是喜欢使用命令，你可以直接在命令终端编译，如果你不喜欢命令编译，你还可以使用GUI这样的界面工具辅助编译。具体的可以阅读：
+  ● Sass编译
+  ● SASS界面编译工具——Codekit的使用
+  ● SASS界面编译工具——Koala的使用
+除此之外，你要是对Node,Grunt和Gulp熟悉，你还可以使用他们帮你编译Sass。比如《Nodejs+Grunt配置SASS项目自动编译》一文所介绍。
+至于如何调试，前端开发人员都知道可以使用Firebug这样的工具来调试CSS。其实使用Sass的同学，也非常期待能在Firebug下直接调试Sass。那么现在在Chromet和Firefox浏览器都支持了Sass的Soucemap功能，可以直接在浏览器中调试相应的Sass。如下面的几篇文章所言：
+  ● SASS调试 http://www.w3cplus.com/preprocessor/sass-debug-with-developer-tool.html
+  ● 实战Sass3.3的Source Maps http://www.w3cplus.com/preprocessor/sass-3.3-source-maps.html
+  ● Source Maps 101
+   Sass在项目中的实战
+说了这么多，我们还是以一个实例来做示例吧，这样形象一些。假设收到这样一个项目：
+
+在“后台”和“前台”各对应了一些设计图。这些我们并不需要太多关心，他们长成什么样子。先将创建好的公用Sass项目复制一份，并将其粘贴到你本地项目环境中，修改成你需要的项目名，比如我这里将其称为“tuhaokuai”。
+
+抛弃其他因素不看，仅看"sass"目录，Sass公用项目和新项目“tuhaokuai”长得是一模一样。当然，在里面会不一样的。主要在pages目录中，针对所需的页面创建了不同的页面文件：
+
+如此一来，针对不同的页面，添加其对应的样式代码，比如：
+_index.scss
+
+_mysite.scss
+
+其他文件就不一一展示了，看上去是不是非常清楚。其实简单点说，这些东西就是一些零件，我们要让项目样式生效，就需要把需要的零件装上去，然后固定他。这样就好了。在这个项目中，由于他并不太复杂，只使用了一个主样式：style.scss。并且将需要的东西通过@import引入进来：
+
+此时你只需要将style.scss编译成style.css，引用到你的项目就行了。
+其实你也可以按照你自己的需求去组装，假设，首页我只需要首页用到的样式，那么你完全可以创建一个index.scss的SCSS文件，然后将需要的引入进来：
+
+接下来，在index.html引用编译出来的样式文件index.css即可（文件名你可以换成自己想要的）。
