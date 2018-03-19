@@ -1,0 +1,83 @@
+浏览器的默认字体高都是16px。
+  ● 兼容性：
+目前，IE9+，Firefox、Chrome、Safari、Opera 的主流版本都支持了rem。
+就算对不支持的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。
+
+  ● 根据设计稿设置rem 举例：设计稿750px
+  //相对单位 ： rem 相对于html的font-size属性值
+  //根据屏幕的宽度计算出rem的值 屏幕越大 rem越大
+  //750px     1.5rem      150px       1rem = 100px
+  //32px      1.5rem      64px        1rem = 42px
+  <style>
+  html,body{
+      /**方便计算 rem 取值一般都是100px*/
+      font-size: 100px;
+  }
+ .box{
+      width: 1.3rem;
+      height: 1.3rem;
+      background: red;
+      float: left;
+      margin: .15rem;
+  }
+  </style>
+  <script type="text/javascript">
+      //计算出最新html的font-size属性值
+      function htmlSize(){
+          //设计稿是750px
+          let num = 750,
+              winW = document.documentElement.clientWidth;
+          document.documentElement.style.fontSize = winW/num *100 +'px';
+      }
+      htmlSize();
+      //当浏览器窗口大小发生变化 会触发
+      window.onresize = function(){
+          htmlSize();
+      }
+  </script>
+
+
+
+  ● 使用%单位方便使用
+css中的body中先全局声明font-size=62.5%，这里的%的算法和rem一样。
+因为100%=16px，1px=6.25%，所以10px=62.5%，
+这是的1rem=10px，所以12px=1.2rem。px与rem的转换通过10就可以得来，很方便了吧！
+  ●  使用方法
+注意，rem是只相对于根元素htm的font-size，即只需要设置根元素的font-size，其它元素使用rem单位设置成相应的百分比即可；
+例子：
+/*16px * 312.5% = 50px;*/
+ html{font-size: 312.5%;}
+/*50px * 0.5 = 25px;*/
+body{
+	font-size: 0.5rem;
+	font-size\0:25px;
+ }
+一般情况下，是这样子使用的
+ html{font-size:62.5%;} 
+	body{font-size:12px;font-size:1.2rem ;} 
+	p{font-size:14px;font-size:1.4rem;}
+  ● 优点
+用一个东西肯定要知道它的好处啦，由于其他字体大小都是基于html的，所以在移动端做适配的时候，可以使用这样的方法
+
+ @media only screen and (min-width: 320px){
+ 	html {
+	 	font-size: 62.5% !important;
+		}
+	 }
+ @media only screen and (min-width: 640px){
+	html {
+		 font-size: 125% !important;
+	}
+}
+@media only screen and (min-width: 750px){
+	html {
+		font-size: 150% !important;
+	}
+ }
+@media only screen and (min-width: 1242px){
+	 html {
+		font-size: 187.5% !important;
+	 }
+}
+
+这样子就能做到仅仅改变html的字体大小，让其他字体具有“响应式”啦。
