@@ -1,0 +1,48 @@
+<!--DEV-->
+<link rel="stylesheet/less" href="css/index.less"></link>    //引入less文件
+<script type="text/javascript" src="js/less-2.5.3.min.js"></script>     //js在开发环境 可以直接对less编译
+
+//less中的变量
+@w :100px;
+ .box{
+   width:@w;
+   height:@w;
+ }
+
+ .contant{
+   .box;
+ }
+
+ //less中的函数
+      //1.不进行编译  
+      //2.@arguments less中的函数支持arguments 
+      //3.小括号中的内容是参数 可以赋值默认值
+.transition(@property:all,@duration:1s,@timing:linear,@delay:0s){
+  -webkit-transition: @property @duration  @timing @delay;
+  -moz-transition: @property @duration  @timing @delay;
+  -ms-transition: @property @duration  @timing @delay;
+  -o-transition: @property @duration  @timing @delay;
+  transition: @property @duration  @timing @delay;
+}
+
+.transition2(@property:all,@duration:1s,@timing:linear,@delay:0s){
+    -webkit-transition: @arguments;
+    -moz-transition:@arguments;
+    -ms-transition: @arguments;
+    -o-transition: @arguments;
+    transition: @arguments;
+}
+
+//类 需要进行编译
+.transform{
+    -webkit-transform: translate(100px);
+    -moz-transform:translate(100px);
+    -ms-transform: translate(100px);
+    -o-transform: translate(100px);
+    transform: translate(100px);
+}
+
+.box{
+  //.transition(@duration: 2s, @delay: 1s)
+  .transition2()
+}
