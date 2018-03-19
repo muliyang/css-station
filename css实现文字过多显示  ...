@@ -1,0 +1,35 @@
+ <div class="mytestDiv">
+	<p class="mytest demoHidden">
+		数据后就是导航时间的就是导航福建省撒的谎接电话记得说发记得说发记得说发绝对是放
+	</p>
+</div>
+
+<style type="text/css">
+	.mytestDiv{
+		width:200px;
+		height:200px;
+		border: 1px solid indianred;
+	}
+	.mytest{
+		overflow: hidden;
+		width: auto;
+		line-height: 20px;
+		max-height: 43px;
+		text-overflow: ellipsis;
+	}
+			
+	.demoHidden{
+		position:relative;
+	}
+	.demoHidden:after{
+		content:"...";
+		display: inline-block;
+		position:absolute;
+		bottom: 0;
+		right: -1px;
+		background: #fff;
+		text-align: left;
+		height: 22px;
+  width:40px;
+	}
+</style>
