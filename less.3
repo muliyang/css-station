@@ -1,0 +1,118 @@
+
+//less中的注释不进行编译
+//less中的变量不进行编译
+//less中的作用域
+  //函数或者类中存在作用域 变量在作用域中存在变量提升
+//如果变量在当前作用域不存在 会默认向上级查找 最外层也没有则会报错
+//css：标记语言
+//less:编程语言 预处理css
+
+//@import 导入less文件
+  @import "less-zyy";
+
+@a:100px;
+.vue{
+    width:@a;
+    @a:10px;        //10px
+        .react{
+            height:@a;      //10px
+        }
+}
+
+
+//less函数的继承
+.public{
+    width:@a;
+    height:@a;
+    color:red;
+    cont-size:12px;
+    font-family: '微软雅黑';
+}
+
+.private{
+    .public
+}   //=>这种写法会把public中的代码copy出一摸一样的在这个css中 会产生大量冗余的代码 应该用:extend继承
+
+.private:extend(.public){
+    //:extend(公共类)
+}
+
+.private{
+    //&:extend(公共类)  &起连接作用
+    &:extend(.public);
+    &:hover{
+        //=>相当于 .private:hover
+    }
+    &>.next{}
+}
+
+
+//编译后
+.vue {
+  width: 10px;
+}
+.vue .react {
+  height: 10px;
+}
+.public,
+.private,
+.private {
+  width: 100px;
+  height: 100px;
+  color: red;
+  cont-size: 12px;
+  font-family: '微软雅黑';
+}
+.private {
+  width: 100px;
+  height: 100px;
+  color: red;
+  cont-size: 12px;
+  font-family: '微软雅黑';
+}
+
+//下面是@import进来的 less-zyy 文件 同时也编译了
+.box {
+  background: blue;
+}
+.bos1 {
+  width: 100%;
+}
+.bos2 {
+  width: 200%;
+}
+.bos3 {
+  width: 300%;
+}
+.bos4 {
+  width: 400%;
+}
+.bos5 {
+  width: 500%;
+}
+.bos6 {
+  width: 600%;
+}
+.bos7 {
+  width: 700%;
+}
+.bos8 {
+  width: 800%;
+}
+.bos9 {
+  width: 900%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
