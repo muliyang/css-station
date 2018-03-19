@@ -1,7 +1,9 @@
+//index.html
 <!--DEV-->
 <link rel="stylesheet/less" href="css/index.less"></link>    //引入less文件
 <script type="text/javascript" src="js/less-2.5.3.min.js"></script>     //js在开发环境 可以直接对less编译
 
+//index.less
 //less中的变量
 @w :100px;
  .box{
@@ -46,3 +48,35 @@
   //.transition(@duration: 2s, @delay: 1s)
   .transition2()
 }
+
+
+编译后
+/**编译命令  lessc index.less index.css*/
+.box {
+  width: 100px;
+  height: 100px;
+}
+.contant {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: all 1s linear 0s;
+  -moz-transition: all 1s linear 0s;
+  -ms-transition: all 1s linear 0s;
+  -o-transition: all 1s linear 0s;
+  transition: all 1s linear 0s;
+}
+.transform {
+  -webkit-transform: translate(100px);
+  -moz-transform: translate(100px);
+  -ms-transform: translate(100px);
+  -o-transform: translate(100px);
+  transform: translate(100px);
+}
+.box {
+  -webkit-transition: all 1s linear 0s;
+  -moz-transition: all 1s linear 0s;
+  -ms-transition: all 1s linear 0s;
+  -o-transition: all 1s linear 0s;
+  transition: all 1s linear 0s;
+}
+
